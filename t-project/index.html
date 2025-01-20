@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoTrip</title>
+
+    <!-- fav-icon  -->
+    <link rel="shortcut icon" href="img/hot-air-balloon.png" type="image/x-icon">
+    <!-- icon  -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- font  -->
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <!-- tailwind-css -->
+    <script src="css/tailwind.css"></script>
+    <style>
+        .data-anym::after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, rgba(5, 16, 54, 0.5) 0%, #051036 72.43%);
+            opacity: 0.85;
+        }
+
+        .cta-content::before {
+            content: "";
+            border-radius: inherit;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(5, 16, 54, 0.7) 0%, rgba(5, 16, 54, 0) 100%);
+        }
+
+        button i {
+            color: #ffffff;
+        }
+
+        .citiescard:hover .cities-top {
+            opacity: 1;
+        }
+
+        .citiescard:hover .cities-bg {
+            background-color: #05103666;
+            opacity: 1;
+        }
+
+        .citiescard:hover .cites-bottom {
+            transform: translateY(0);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        header.is-sticky {
+            background-color: #051036;
+        }
+
+        .blog .blog-card .ratio img {
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .blog:hover .blog-card .ratio img {
+            transform: scale(1.1);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .Recommend:hover .hotels-card .card-img img {
+            transform: scale(1.1);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .Recommend .hotels-card .card-img img {
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .Recommend:hover .hotels-card .hotelcard-content h4 {
+            text-decoration: underline;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* ============== loader ================== */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #051036;
+        }
+
+        .loader {
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            width: 150px;
+            height: 150px;
+            --clr: rgb(25, 14, 5);
+            --clr-alpha: rgba(11, 4, 55, 0.1);
+            animation: spinner 1.6s infinite ease;
+            transform-style: preserve-3d;
+        }
+    </style>
+</head>
+
+<body class="font-jostt">
+    <!-- loader  -->
+    <div class="preloader loader flex-center">
+        <div class="spinner">
+            <img src="img/logo-light (1).svg" alt="">
+        </div>
+    </div>
+    <!-- header  -->
+    <header class="fixed top-0 left-0 w-full h-[99px] z-[1000] ">
+        <div class="px-[30px]  py-[10px]">
+            <div class="row flex justify-between items-center">
+                <div class="w-3/6">
+                    <div class="flex items-center ">
+                        <a href="#" class="mr-[20px]">
+                            <img src="img/logo-light (1).svg" alt="">
+                        </a>
+                        <div class="header-menu">
+                            <ul class="flex text-[#ffffff]">
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Home</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Categories</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] hover:text-[#3554D1]"> Destinations</span>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Blog</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Pages</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Dashboard</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                                <li class="py-[25px]">
+                                    <a href="#" class="flex items-center px-[10px]">
+                                        <span class="mr-[10px] text-[15px] ">Contact</span>
+                                        <i class="fa-solid fa-angle-down mr-[10px] text-[10px]"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-[35%]">
+                    <div class="flex items-center">
+                        <div class="row flex items-center">
+                            <div class="flex items-center text-[#ffffff] px-[10px]">
+                                <span class="text-[#ffffff]">USD</span>
+                                <i class="fa-solid fa-angle-down ml-[10px] text-[10px]"></i>
+                            </div>
+                            <div class="px-[10px]">
+                                <div class="w-[1px] h-[20px] bg-[#ffffff33]"></div>
+                            </div>
+                            <div class="px-[10px] flex items-center">
+                                <img src="img/lang.png" alt="" class="rounded-full mr-[10px]">
+                                <span class="text-[#ffffff]">United Kingdom</span>
+                                <i class="fa-solid fa-angle-down ml-[10px] text-[10px] text-[#fff]"></i>
+                            </div>
+                            <div class="flex items-center ml-[20px]">
+                                <a href="#"
+                                    class="text-[14px] text-[#051036] px-[30px] py-[15px] rounded bg-[#fff]">Become An
+                                    Expert</a>
+                                <a href="#"
+                                    class="text-[14px] text-[#ffffff] px-[30px] py-[15px] rounded ml-[20px] bg-[transparent] border-[#fff] border hover:bg-[#fff] hover:text-[#051036]">Sign
+                                    In / Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="masthead relative pt-[330px] pb-[210px]">
+        <div class="data-anym  absolute -z-[1] right-0 top-0 bottom-0 left-0  ">
+            <img src="img/bg.webp" alt="" class="w-full h-full object-cover">
+        </div>
+        <div class="container mx-auto">
+            <div class="text-center">
+                <h1 class="text-6xl text-[#ffffff] font-semibold">Find Next Place To Visit</h1>
+                <p class="text-base text-[#ffffff] leading-[1.875] ">Discover amzaing places at exclusive deals</p>
+            </div>
+            <div class="tabs mt-[60px]">
+                <div class="tabs-control flex justify-center">
+                    <div class="px-[15px] py-[10px] ">
+                        <button
+                            class="text-[15px] text-[#ffffff] font-medium  tabs-btn  hover:text-[#3554D1] border-b-[1px] border-[white] border-solid">Hotel</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Tour</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Activity</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Holiday
+                            Rentals</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Car</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Cruise</button>
+                    </div>
+                    <div class="px-[15px] py-[10px]">
+                        <button class="text-[15px] text-[#ffffff] font-medium hover:text-[#3554D1]">Flights </button>
+                    </div>
+                </div>
+                <div class="tabs-content mt-[30px] flex justify-center">
+                    <div class="tabs-pen">
+                        <div class="mainsearch rounded-full w-[900px] bg-[#ffffff] px-[10px] py-[10px] ">
+                            <div class="button-gid items-center flex">
+                                <div class="searchmenu px-[30px]">
+                                    <h4 class="text-[15px] text-[#051036] font-medium">Location</h4>
+                                    <div class="text-[15px] text-[#697488] ">
+                                        <input type="search" placeholder="Where are you going?"
+                                            class=" border-none p-0">
+                                    </div>
+                                </div>
+                                <div class="searchmenu px-[30px]  border-[#DDDDDD] border-l-[1px] ">
+                                    <h4 class="text-[15px] text-[#051036] font-medium leading-6">Check in - Check out
+                                    </h4>
+                                    <div class="text-[15px] text-[#697488] leading-6">
+                                        <span>Wed 2 Mar</span>
+                                        -
+                                        <span>Fri 11 Apr</span>
+                                    </div>
+                                </div>
+                                <div class="searchmenu px-[30px]  border-[#DDDDDD] border-l-[1px] ">
+                                    <h4 class="text-[15px] text-[##051036] font-medium leading-6">Guest</h4>
+                                    <div class="text-[15px] text-[#697488] leading-6">
+                                        <span>2</span>
+                                        adults -
+                                        <span>1</span>
+                                        childeren -
+                                        <span>1</span>
+                                        room
+                                    </div>
+                                </div>
+                                <div class="button-item border-none ml-14">
+                                    <button
+                                        class=" rounded-full text-[#ffffff] bg-[#3554D1] px-[35px] py-[20px] hover:bg-[#051036]">
+                                        <i class="fa-solid fa-magnifying-glass mr-[10px]"></i>
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-[120px] pb-[60px]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex items-end justify-between">
+                <div class="section-tit px-[10px] py-[10px]">
+                    <h2 class="text-[30px] text-[#051036] leading-6 font-semibold">Popular Destinations</h2>
+                    <p class="text-[16px] text-[#697488] mt-[10px] leading-7">These popular destinations have a lot to
+                        offer</p>
+                </div>
+                <div
+                    class="buttn py-[14px] px-[30px] bg-[#8ea2f60d]  text-[#3554D1] text-[15px] font-medium rounded hover:bg-[#3554D1] hover:text-[#fff]">
+                    <a href="#" class="btn-2 "> View All Destinations</a>
+                    <i class="fa-solid fa-magnifying-glass ml-[15px]"></i>
+                </div>
+            </div>
+            <div class="pt-[40px] ">
+                <div class="row flex">
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="citiescard relative ">
+                            <div class="cities-img  overflow-hidden rounded">
+                                <img src="img/31.webp" alt="" class="">
+                            </div>
+                            <div
+                                class="citiescard-cont pt-[30px] pb-[20px] px-[20px] text-center overflow-hidden absolute z-[1] top-0 left-0 w-full h-full flex flex-col justify-between ">
+                                <div
+                                    class="cities-bg absolute z-[-1] top-0 left-0 w-full h-full bg-[#05103666] opacity-0 ease-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                </div>
+                                <div
+                                    class="cities-top opacity-0 all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]  ">
+                                    <div class="text-[14px] text-[#ffffff]">14 Hotel - 22 Cars - 18 Tours - 95 Activity
+                                    </div>
+                                </div>
+                                <div
+                                    class="cites-bottom translate-y-[80px]  all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                    <h4 class="text-[26px] text-[#ffffff] mb-[20px] leading-6 font-semibold">New York
+                                    </h4>
+                                    <button
+                                        class="h-[60px] text-[#051036] bg-[#FFFFFF] font-medium text-[15px] rounded w-full hover:bg-[#3554D1] hover:text-[#ffffff]">Discover</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="citiescard relative ">
+                            <div class="cities-img  overflow-hidden rounded">
+                                <img src="img/32.webp" alt="" class="">
+                            </div>
+                            <div
+                                class="citiescard-cont pt-[30px] pb-[20px] px-[20px] text-center overflow-hidden absolute z-[1] top-0 left-0 w-full h-full flex flex-col justify-between ">
+                                <div
+                                    class="cities-bg absolute z-[-1] top-0 left-0 w-full h-full bg-[#05103666] opacity-0 ease-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                </div>
+                                <div
+                                    class="cities-top opacity-0 all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]  ">
+                                    <div class="text-[14px] text-[#ffffff]">14 Hotel - 22 Cars - 18 Tours - 95 Activity
+                                    </div>
+                                </div>
+                                <div
+                                    class="cites-bottom translate-y-[80px]  all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                    <h4 class="text-[26px] text-[#ffffff] mb-[20px] leading-6 font-semibold">London</h4>
+                                    <button
+                                        class="h-[60px] text-[#051036] bg-[#FFFFFF] font-medium text-[15px] rounded w-full hover:bg-[#3554D1] hover:text-[#ffffff]">Discover</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="citiescard relative ">
+                            <div class="cities-img  overflow-hidden rounded">
+                                <img src="img/33.webp" alt="" class="">
+                            </div>
+                            <div
+                                class="citiescard-cont pt-[30px] pb-[20px] px-[20px] text-center overflow-hidden absolute z-[1] top-0 left-0 w-full h-full flex flex-col justify-between ">
+                                <div
+                                    class="cities-bg absolute z-[-1] top-0 left-0 w-full h-full bg-[#05103666] opacity-0 ease-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                </div>
+                                <div
+                                    class="cities-top opacity-0 all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]  ">
+                                    <div class="text-[14px] text-[#ffffff]">14 Hotel - 22 Cars - 18 Tours - 95 Activity
+                                    </div>
+                                </div>
+                                <div
+                                    class="cites-bottom translate-y-[80px]  all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                    <h4 class="text-[26px] text-[#ffffff] mb-[20px] leading-6 font-semibold">Barcelona
+                                    </h4>
+                                    <button
+                                        class="h-[60px] text-[#051036] bg-[#FFFFFF] font-medium text-[15px] rounded w-full hover:bg-[#3554D1] hover:text-[#ffffff]">Discover</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 ">
+                        <a href="#" class="citiescard relative ">
+                            <div class="cities-img  overflow-hidden rounded">
+                                <img src="img/34.webp" alt="" class="">
+                            </div>
+                            <div
+                                class="citiescard-cont pt-[30px] pb-[20px] px-[20px] text-center overflow-hidden absolute z-[1] top-0 left-0 w-full h-full flex flex-col justify-between ">
+                                <div
+                                    class="cities-bg absolute z-[-1] top-0 left-0 w-full h-full bg-[#05103666] opacity-0 ease-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]">
+                                </div>
+                                <div
+                                    class="cities-top opacity-0 all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s]  ">
+                                    <div class="text-[14px] text-[#ffffff]">14 Hotel - 22 Cars - 18 Tours - 95 Activity
+                                    </div>
+                                </div>
+                                <div
+                                    class="cites-bottom translate-y-[80px]  all-[cubic-bezier(0.165, 0.84, 0.44, 1)]  duration-[0.5s] ">
+                                    <h4 class="text-[26px] text-[#ffffff] mb-[20px] leading-6 font-semibold">Sydney</h4>
+                                    <button
+                                        class="h-[60px] text-[#051036] bg-[#FFFFFF] font-medium text-[15px] rounded w-full hover:bg-[#3554D1] hover:text-[#ffffff]">Discover</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-[60px]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex">
+                <div class="w-6/12 py-[10px] px-[15px]">
+                    <div class="ctacard relative">
+                        <div class="cta-img  ">
+                            <img src="img/11.png" alt="" class="rounded z-[-1]">
+                        </div>
+                        <div class="cta-content absolute inset-x-0 inset-y-0 p-[70px]">
+                            <h4 class="text-[40px] text-[#ffffff] font-semibold  relative z-[2]">Things to do on <br>
+                                your trip</h4>
+                            <div class="mt-[30px] relative z-[2]">
+                                <a href="#"
+                                    class="min-w-[180px] py-[15px] px-[48px] rounded bg-[#ffffff] text-[#051036] hover:bg-[#3554D1] hover:text-[#ffffff]">Experiences</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-6/12 py-[10px] px-[15px]">
+                    <div class="ctacard relative">
+                        <div class="cta-img  ">
+                            <img src="img/12.png" alt="" class="rounded">
+                        </div>
+                        <div class="cta-content absolute inset-x-0 inset-y-0 p-[70px]">
+                            <div class="text-[15px] font-medium text-[#FFFFFF] mb-[10px] relative z-[2]">Enjoy Summer
+                                Deals</div>
+                            <h4 class="text-[40px] text-[#ffffff] font-semibold relative z-[2]">Up to 70% Discount!</h4>
+                            <div class="mt-[30px] relative z-[2]">
+                                <a href="#"
+                                    class="min-w-[180px] py-[15px] px-[48px] rounded bg-[#ffffff] text-[#051036] hover:bg-[#3554D1] hover:text-[#ffffff]">Learn
+                                    More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-[60px]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex justify-between items-end">
+                <div class="section-tit px-[10px] py-[10px]">
+                    <h2 class="text-[30px] text-[#051036] leading-6 font-semibold">Recommended</h2>
+                    <p class="text-[16px] text-[#697488] mt-[10px] leading-7">Interdum et malesuada fames ac ante ipsum
+                    </p>
+                </div>
+                <div class="flex items-center px-[20px] py-[15px] rounded border border-[#DDDDDD]">
+                    <span class="mr-[25px] text-[#051036] text-[16px]">Hotel</span>
+                    <i class="fa-solid fa-angle-down  text-[10px] ml-[25px]"></i>
+                </div>
+            </div>
+            <div class="pt-[40px]">
+                <div class="row flex">
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="Recommend ">
+                            <div class="hotels-card">
+                                <div class="hotelcard-img relative z-[0]">
+                                    <div class="card-img rounded overflow-hidden">
+                                        <img src="img/51.png" alt="" class="rounded ">
+                                    </div>
+                                    <div class="wish-list absolute top-[20px] right-[20px]">
+                                        <button
+                                            class="bg-[#FFFFFF] rounded-full px-[9px] py-[9px] flex items-center hover:bg-[#3554D1]">
+                                            <i
+                                                class="fa-regular fa-heart text-[#051036] text-[12px] hover:text-[#ffffff]"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-img-left absolute top-[20px] left-0 ">
+                                        <div
+                                            class="py-[5px] px-[15px] rounded-r-[4px] bg-[#051036] text-[#ffffff] uppercase">
+                                            Breakfast included</div>
+                                    </div>
+                                </div>
+                                <div class="hotelcard-content mt-[10px]">
+                                    <h4 class="text-[18px] text-[#051036] font-medium"><span>The Montcalm At Brewery
+                                            London city City</span></h4>
+                                    <p class="mt-[5px] text-[14px] text-[#697488]">Westminster Borough, London</p>
+                                    <div class="mt-[20px] flex items-center ">
+                                        <div
+                                            class="text-[12px] text-[#FFFFFF] rounded px-[8px] py-[8px] bg-[#3554D1]  font-semibold">
+                                            4.8</div>
+                                        <div class="text-[14px] text-[#051036] ml-[10px] font-medium">Exceptional</div>
+                                        <div class="text-[14px] text-[#697488] ml-[10px] font-medium">3,014 reviews
+                                        </div>
+                                    </div>
+                                    <div class="mt-[5px]    ">
+                                        <div class="text-[#051036] text-[16px] font-medium hover:text-[#3554D1]">
+                                            Starting from
+                                            <span class="text-[#3554D1] font-medium">US$72</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="Recommend ">
+                            <div class="hotels-card">
+                                <div class="hotelcard-img relative z-[0]">
+                                    <div class="card-img rounded overflow-hidden">
+                                        <img src="img/52.png" alt="" class="rounded ">
+                                    </div>
+                                    <div class="wish-list absolute top-[20px] right-[20px]">
+                                        <button
+                                            class="bg-[#FFFFFF] rounded-full px-[9px] py-[9px] flex items-center hover:bg-[#3554D1]">
+                                            <i
+                                                class="fa-regular fa-heart text-[#000000] text-[12px] hover:text-[#ffffff]"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="hotelcard-content mt-[10px]">
+                                    <h4 class="text-[18px] text-[#051036] font-medium"><span>Staycity Aparthotels
+                                            Deptford Bridge Station</span></h4>
+                                    <p class="mt-[5px] text-[14px] text-[#697488]">Ciutat Vella, Barcelona</p>
+                                    <div class="mt-[20px] flex items-center ">
+                                        <div
+                                            class="text-[12px] text-[#FFFFFF] rounded px-[8px] py-[8px] bg-[#3554D1]  font-semibold">
+                                            4.8</div>
+                                        <div class="text-[14px] text-[#051036] ml-[10px] font-medium">Exceptional</div>
+                                        <div class="text-[14px] text-[#697488] ml-[10px] font-medium">3,014 reviews
+                                        </div>
+                                    </div>
+                                    <div class="mt-[5px]    ">
+                                        <div class="text-[#051036] text-[16px] font-medium hover:text-[#3554D1]">
+                                            Starting from
+                                            <span class="text-[#3554D1] font-medium">US$72</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 mr-[30px]">
+                        <a href="#" class="Recommend ">
+                            <div class="hotels-card">
+                                <div class="hotelcard-img relative z-[0]">
+                                    <div class="card-img rounded overflow-hidden">
+                                        <img src="img/53.png" alt="" class="rounded ">
+                                    </div>
+                                    <div class="wish-list absolute top-[20px] right-[20px]">
+                                        <button
+                                            class="bg-[#FFFFFF] rounded-full px-[9px] py-[9px] flex items-center hover:bg-[#3554D1]">
+                                            <i
+                                                class="fa-regular fa-heart text-[#000000] text-[12px] hover:text-[#ffffff]"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-img-left absolute top-[20px] left-0 ">
+                                        <div
+                                            class="py-[5px] px-[15px] rounded-r-[4px] bg-[#3554D1] text-[#ffffff] uppercase">
+                                            Best Seller</div>
+                                    </div>
+                                </div>
+                                <div class="hotelcard-content mt-[10px]">
+                                    <h4 class="text-[18px] text-[#051036] font-medium"><span>The Westin New York at
+                                            Times Square Square</span></h4>
+                                    <p class="mt-[5px] text-[14px] text-[#697488]">Manhattan, New York</p>
+                                    <div class="mt-[20px] flex items-center ">
+                                        <div
+                                            class="text-[12px] text-[#FFFFFF] rounded px-[8px] py-[8px] bg-[#3554D1]  font-semibold">
+                                            4.8</div>
+                                        <div class="text-[14px] text-[#051036] ml-[10px] font-medium">Exceptional</div>
+                                        <div class="text-[14px] text-[#697488] ml-[10px] font-medium">3,014 reviews
+                                        </div>
+                                    </div>
+                                    <div class="mt-[5px]    ">
+                                        <div class="text-[#051036] text-[16px] font-medium hover:text-[#3554D1]">
+                                            Starting from
+                                            <span class="text-[#3554D1] font-medium">US$72</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="w-1/4 ">
+                        <a href="#" class="Recommend ">
+                            <div class="hotels-card">
+                                <div class="hotelcard-img relative z-[0]">
+                                    <div class="card-img rounded overflow-hidden">
+                                        <img src="img/54.png" alt="" class="rounded ">
+                                    </div>
+                                    <div class="wish-list absolute top-[20px] right-[20px]">
+                                        <button
+                                            class="bg-[#FFFFFF] rounded-full px-[9px] py-[9px] flex items-center hover:bg-[#3554D1]">
+                                            <i
+                                                class="fa-regular fa-heart text-[#000000] text-[12px] hover:text-[#ffffff]"></i>
+                                        </button>
+                                    </div>
+                                    <div class="card-img-left absolute top-[20px] left-0 ">
+                                        <div
+                                            class="py-[5px] px-[15px] rounded-r-[4px] bg-[#F8D448] text-[#000000] uppercase">
+                                            Top Rated</div>
+                                    </div>
+                                </div>
+                                <div class="hotelcard-content mt-[10px]">
+                                    <h4 class="text-[18px] text-[#051036] font-medium"><span>DoubleTree by Hilton Hotel
+                                            New York Times Square West</span></h4>
+                                    <p class="mt-[5px] text-[14px] text-[#697488]">Vaticano Prati, Rome</p>
+                                    <div class="mt-[20px] flex items-center ">
+                                        <div
+                                            class="text-[12px] text-[#FFFFFF] rounded px-[8px] py-[8px] bg-[#3554D1]  font-semibold">
+                                            4.8</div>
+                                        <div class="text-[14px] text-[#051036] ml-[10px] font-medium">Exceptional</div>
+                                        <div class="text-[14px] text-[#697488] ml-[10px] font-medium">3,014 reviews
+                                        </div>
+                                    </div>
+                                    <div class="mt-[5px]    ">
+                                        <div class="text-[#051036] text-[16px] font-medium hover:text-[#3554D1]">
+                                            Starting from
+                                            <span class="text-[#3554D1] font-medium">US$72</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="layout pt-[60px] pb-[120px]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex justify-between">
+                <div class="w-1/4 px-[10px]">
+                    <div class="feture-icon">
+                        <div class="flex justify-center">
+                            <img src="img/1.svg" alt="">
+                        </div>
+                        <div class="text-center mt-[30px]">
+                            <h4 class="text-[18px] font-medium leading-6 text-[#051036]">Best Price Guarantee</h4>
+                            <p class="text-[15px] mt-[10px] text-[#697488]">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/4 px-[10px]">
+                    <div class="feture-icon">
+                        <div class="flex justify-center">
+                            <img src="img/2.svg" alt="">
+                        </div>
+                        <div class="text-center mt-[30px]">
+                            <h4 class="text-[18px] font-medium leading-6 text-[#051036]">Easy & Quick Booking</h4>
+                            <p class="text-[15px] mt-[10px] text-[#697488]">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-1/4 px-[10px]">
+                    <div class="feture-icon">
+                        <div class="flex justify-center">
+                            <img src="img/3.svg" alt="">
+                        </div>
+                        <div class="text-center mt-[30px]">
+                            <h4 class="text-[18px] font-medium leading-6 text-[#051036]">Customer Care 24/7</h4>
+                            <p class="text-[15px] mt-[10px] text-[#697488]">Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="py-[120px] bg-[#E5F0FD]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex justify-between">
+                <div class="w-2/5 py-[20px] px-[15px]">
+                    <h2 class="text-[30px] text-[#051036] font-semibold leading-normal">What our customers are <br>
+                        saying us?</h2>
+                    <p class="mt-[20px] text-[16px] text-[#697488] leading-7">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh finibus et. Aenean eu enim
+                        justo.</p>
+                    <div class="row flex pt-[60px] ">
+                        <div class="w-2/5">
+                            <div class="text-[30px] text-[#051036] font-semibold ">13m+</div>
+                            <div class="text-[16px] text-[#697488] ">Happy People</div>
+                        </div>
+                        <div class="w-3/5">
+                            <div class="text-[30px] text-[#051036] font-semibold">4.88</div>
+                            <div class="text-[16px] text-[#697488] ">Overall rating</div>
+                            <div class="flex text-[#3554D1] pt-[10px]">
+                                <i class="fa-solid fa-star text-[9px] pr-[4px]"></i>
+                                <i class="fa-solid fa-star text-[9px] pr-[4px]"></i>
+                                <i class="fa-solid fa-star text-[9px] pr-[4px]"></i>
+                                <i class="fa-solid fa-star text-[9px] pr-[4px]"></i>
+                                <i class="fa-solid fa-star text-[9px] "></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-2/4">
+                    <div class="swipe">
+                        <div class="row flex items-center">
+                            <div class="px-[15px] py-[10px]">
+                                <img src="img/41.png" alt="" class="">
+                            </div>
+                            <div>
+                                <h5 class=" text-[16px] text-[#051036] font-medium leading-normal">Annette Black</h5>
+                                <div class="text-[15px] text-[#697488] #697488">UX / UI Designer</div>
+                            </div>
+                        </div>
+                        <p class="text-[18px] text-[#051036] mt-[30px] font-medium leading-7 pr-[15px]">The place is in
+                            a great location in Gumbet. The area is safe and beautiful. The apartment was comfortable
+                            and the host was kind and responsive to our requests.</p>
+                    </div>
+                    <div class="mt-[60px] items-center flex">
+                        <div class="text-[#051036] text-[16px] font-medium">03</div>
+                        <div class="h-[3px] w-[20%] border-[#051036] border-2 ml-[15px]"></div>
+                        <div class="h-[3px] w-[20%] border-[#DDDDDD] border-2 "></div>
+                        <div class="h-[3px] w-[20%] border-[#DDDDDD] border-2 "></div>
+                        <div class="text-[#051036] text-[16px] font-medium ml-[15px]">03</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pt-[120px] pb-[60px]">
+        <div class="container mx-auto w-[1320px]">
+            <div class=" justify-center text-center ">
+                <h2 class="text-[30px] leading-6 font-semibold text-[#051036]">Get inspiration for your next trip</h2>
+                <p class="mt-[5px] font-normal leading-[46px] text-[#697488] text-[16px]">Interdum et malesuada fames
+                </p>
+            </div>
+            <div class="row flex pt-[45px]">
+                <div class="w-2/6 p-[15px] ">
+                    <a href="#" class="blog">
+                        <div class="blog-card overflow-hidden">
+                            <div class="blog-card-img ">
+                                <div class="ratio rounded-lg  block overflow-hidden">
+                                    <img src="img/21.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-[20px]">
+                            <h4 class="text-[18px] text-[#051036] font-medium">10 European ski destinations you should
+                                visit this winter</h4>
+                            <div class="text-[15px] text-[#697488]  leading-[1.5] mt-[5px]">April 06, 2022</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="w-2/6 p-[15px] ">
+                    <a href="#" class="blog">
+                        <div class="blog-card overflow-hidden">
+                            <div class="blog-card-img ">
+                                <div class="ratio rounded-lg  block overflow-hidden">
+                                    <img src="img/22.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-[20px]">
+                            <h4 class="text-[18px] text-[#051036] font-medium">Booking travel during Corona: good advice
+                                in an uncertain time</h4>
+                            <div class="text-[15px] text-[#697488]  leading-[1.5] mt-[5px]">April 06, 2022</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="w-2/6 p-[15px] ">
+                    <a href="#" class="blog">
+                        <div class="blog-card overflow-hidden">
+                            <div class="blog-card-img ">
+                                <div class="ratio rounded-lg  block overflow-hidden">
+                                    <img src="img/23.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-[20px]">
+                            <h4 class="text-[18px] text-[#051036] font-medium">Where can I go? 5 amazing countries that
+                                are open right now</h4>
+                            <div class="text-[15px] text-[#697488]  leading-[1.5] mt-[5px]">April 06, 2022</div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="pt-[60px] pb-[120px] ">
+        <div class="container mx-auto w-[1320px]">
+            <div class="section-title ">
+                <h2 class="text-[30px] text-[#051036] l-normal font-semibold">Destinations we love</h2>
+                <p class="text-[16px] text-[#697488] mt-[5px]">Interdum et malesuada fames ac ante ipsum</p>
+            </div>
+            <div class="tabs-pill pt-[40px]">
+                <div class="tab-control flex">
+                    <div>
+                        <button
+                            class="pr-[30px] pl-[30px] pt-[15px] pb-[15px] rounded font-medium text-[15px] text-[#3554D1] bg-[#879cee0d]">Regions</button>
+                    </div>
+                    <div>
+                        <button
+                            class="pr-[30px] pl-[30px] pt-[15px] pb-[15px] rounded font-medium text-[15px] text-[#000000] hover:text-[#3554D1]">Cities</button>
+                    </div>
+                    <div>
+                        <button
+                            class="pr-[30px] pl-[30px] pt-[15px] pb-[15px] rounded font-medium text-[15px] text-[#000000] hover:text-[#3554D1]">Places
+                            of interest</button>
+                    </div>
+                </div>
+                <div class="tab-content pt-[30px]">
+                    <div class="row flex flex-wrap">
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Hawai</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Istanbul</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    San Diego</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Phuket</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Reykjavik</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Santorini</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5 py-[10px]">
+                            <a href="#" class="">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Los Angeles</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    İbiza</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Boston</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Florence</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Mykonos</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    London</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Paris</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5 py-[10px]">
+                            <a href="#" class="">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Dubai</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Krakow</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Jersey</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Prag</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Amsterdam</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Rome</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                        <div class="w-1/5  py-[10px]">
+                            <a href="#">
+                                <div class="text-[15px] font-medium text-[#051036] leading-loose hover:text-[#3554D1]">
+                                    Miami</div>
+                                <div class="text-[14px] text-[#697488]">12,683 properties</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-[60px] bg-[#0D2857]">
+        <div class="container mx-auto w-[1320px]">
+            <div class="row flex items-center   ">
+                <div class="w-2/4 flex">
+                    <div class="row flex items-center">
+                        <div class="w-1/5">
+                            <div class="icon-newsletter text-[60px] text-[#ffffff] font-normal px-[15px]">
+                                <i class="fa-solid fa-envelope-open-text"></i>
+                            </div>
+                        </div>
+                        <div class="w-4/5 ">
+                            <h4 class="text-[26px] font-medium leading-6 text-[#ffffff]">Your Travel Journey Starts Here
+                            </h4>
+                            <div class="text-[#ffffff] text-[16px] leading-7">Sign up and we'll send the best deals to
+                                you</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-2/4 flex items-center">
+                    <div class="single-filed flex">
+                        <div>
+                            <input type="text" placeholder="Your Email"
+                                class="w-[410px] rounded text-[15px] px-[17px] py-[20px]">
+                        </div>
+                        <div class="ml-[15px]">
+                            <button
+                                class="btn-1 py-[14px] px-[30px] bg-[#3554D1] text-[15px] text-[#ffffff] font-medium rounded h-[60px]">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container mx-auto w-[1320px] py-[60px] ">
+            <div class="row flex">
+                <div class="w-1/5">
+                    <h5 class="font-medium text-[16px] text-[#051036]">Contact Us</h5>
+                    <div class="mt-[30px]">
+                        <div class="text-[14px] text-[#051036]">Toll Free Customer Care</div>
+                        <a href="#" class="text-[18px] text-[#3554D1] font-medium">+(1) 123 456 7890</a>
+                    </div>
+                    <div class="mt-[35px]">
+                        <div class="text-[14px] text-[#051036]">Need live support?</div>
+                        <a href="#" class="text-[18px] text-[#3554D1] font-medium">hi@gotrip.com</a>
+                    </div>
+                </div>
+                <div class="w-1/5">
+                    <h5 class="text-[16px] mb-[30px] font-medium">Company</h5>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">About
+                        Us</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Careers</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Blog</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Press</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Gift
+                        Cards</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Magazine</a>
+                </div>
+                <div class="w-1/5">
+                    <h5 class="text-[16px] mb-[30px] font-medium">Support</h5>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Contact</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Legal
+                        Notice</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Privacy
+                        Policy</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Terms
+                        and Conditions</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Sitemap</a>
+                </div>
+                <div class="w-1/5">
+                    <h5 class="text-[16px] mb-[30px] font-medium">Other Services</h5>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Car
+                        hire</a>
+                    <a href="#"
+                        class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Activity
+                        Finder</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Tour
+                        List</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Flight
+                        finder</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Cruise
+                        Ticket</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Holiday
+                        Rental</a>
+                    <a href="#" class="block py-[5px] text-[16px] text-[#051036] leading-7 hover:text-[#3554D1]">Travel
+                        Agents</a>
+                </div>
+                <div class="w-1/5">
+                    <h5 class="text-[16px] mb-[30px] font-medium">Mobile</h5>
+                    <div class="flex items-center border border-[#DDDDDD] px-[20px] py-[10px] ">
+                        <div class="text-[24px]">
+                            <i class="fa-brands fa-apple"></i>
+                        </div>
+                        <div class="ml-[20px]">
+                            <div class="text-[14px] text-[#697488] leading-7">Download on the</div>
+                            <div class="text-[15px] text-[#051036] leading-none">Apple Store</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center border border-[#DDDDDD] px-[20px] py-[10px] mt-[20px]">
+                        <div class="text-[24px]">
+                            <i class="fa-brands fa-google-play"></i>
+                        </div>
+                        <div class="ml-[20px]">
+                            <div class="text-[14px] text-[#697488] leading-7">Get in on</div>
+                            <div class="text-[15px] text-[#051036] leading-none">Google Play</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto w-[1320px] py-[20px] border-t border-[#DDDDDD]">
+            <div class="row flex items-center justify-between">
+                <div class="w-2/4 flex">
+                    <p class="px-[15px] py-[5px] text-[16px] text-[#051036] leading-7"> © 2022 GoTrip LLC All rights
+                        reserved.</p>
+                    <div class="flex px-[15px] py-[5px]">
+                        <a href="#" class="px-[7.5px] text-[16px] text-[#051036] hover:text-[#3554d1]">Privacy</a>
+                        <a href="#" class="px-[7.5px] text-[16px] text-[#051036] hover:text-[#3554d1]">Terms</a>
+                        <a href="#" class="px-[7.5px] text-[16px] text-[#051036] hover:text-[#3554d1]">Site Map</a>
+                    </div>
+                </div>
+                <div class="w-1/4 flex items-center">
+                    <div class="btn3 flex items-center mr-[10px]">
+                        <i class="fa-solid fa-globe text-[16px] mr-[10px] text-[#051036]"></i>
+                        <span class="underline text-[14px] text-[#051036] font-medium">English (US)</span>
+                    </div>
+                    <div class="btn3 flex items-center">
+                        <i class="fa-solid fa-dollar-sign text-[16px] mr-[10px] text-[#051036]"></i>
+                        <span class="underline text-[14px] text-[#051036] font-medium  mr-[10px]">USD</span>
+                    </div>
+                    <div class="flex items-center ml-[10px]">
+                        <a href="#" class="px-[10px] text-[#051036]  hover:text-[#0d6efd]">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="px-[10px] text-[#051036] hover:text-[#0d6efd]">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                        <a href="#" class="px-[10px]  text-[#051036] hover:text-[#0d6efd]">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="px-[10px] text-[#051036] hover:text-[#0d6efd]">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- jquery  -->
+    <script src="js/jquery.min.js"></script>
+    <!-- loader  -->
+    <script src="js/jquery.preloadinator.min.js"></script>
+    <!-- config  -->
+    <script src="js/tailwind.config.js"></script>
+
+    <script>    {
+            const header = document.querySelector("header");
+            const toggleClass = "is-sticky";
+
+            window.addEventListener("scroll", () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 150) {
+                    header.classList.add(toggleClass);
+                } else {
+                    header.classList.remove(toggleClass);
+                }
+            });
+        }
+
+    </script>
+    <script>
+        $(".loader").preloadinator({
+            scroll: false,
+            minTime: 500,
+            animation: "fadeOut",
+            animationDuration: 400,
+            function() { },
+            afterEnableScroll: function () { },
+            afterRemovePreloader: function () { },
+        });
+    </script>
+
+</body>
+
+</html>
